@@ -18,7 +18,7 @@ class ProdutosCards extends React.Component {
         const produto = this.props.produtos
         return(
             <ContainerCards>
-                <img src="produto.imageUrl"/>
+                <img src="produto.imageUrl" alt="meteorito"/>
                 <InformacaoCard>
                     <p>{produto.name}</p>
                     <p>R${produto.value},00</p>
