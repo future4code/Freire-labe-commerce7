@@ -1,5 +1,6 @@
 import React from 'react';
 import Produtos from './components/Produtos/Produtos'
+import Filtros  from './components/Filtros';
 
 const produtos = [
   {
@@ -42,19 +43,62 @@ const produtos = [
 
 class App extends React.Component {
   state = {
-    
-      
-  }
+    busca: "",
+    minPrice: "",
+    maxPrice: "", 
+ }  
+
+
+uptadeMinPrice = (event) => {
+
+    this.setState({minPrice: event.target.value})
+}
+
+uptadeMaxPrice = (event) => {
+
+    this.setState({maxPrice: event.target.value})
+}
+
+uptadeBusca = (event) => {
+
+    this.setState({busca: event.target.value})
+}
+
+
   render() {
-     return (
-    <Produtos
+     return 
+      <div>
+        <header></header>
+
+        <main>
+
+          <Filtros
+          valorMinPrice={this.state.minPrice}
+          valorMaxPrice={this.state.maxPrice}
+          valorBuscaProduto={this.state.busca}
+          filtroMinPrice={this.uptadeMinPrice}
+          filtroMaxPrice={this.uptadeMaxPrice}
+          filtroBuscaProduto={this.uptadeBusca}          
+          />
+
+          <div><Produtos
     produtos = {produtos}
+          </div>
+
+          <div>Carinhos</div>
+
+        </main>
+
+        <footer></footer>
+      </div>
+    
       
     />
       
   );
   }
  
+
 }
 
 export default App;
