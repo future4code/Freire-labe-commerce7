@@ -1,26 +1,62 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import styled from 'styled-component';
+import Filtros  from './components/Filtros';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends React.Component {
+  state = {
+    busca: "",
+    minPrice: "",
+    maxPrice: "", 
+ }  
+
+
+uptadeMinPrice = (event) => {
+
+    this.setState({minPrice: event.target.value})
+}
+
+uptadeMaxPrice = (event) => {
+
+    this.setState({maxPrice: event.target.value})
+}
+
+uptadeBusca = (event) => {
+
+    this.setState({busca: event.target.value})
+}
+
+
+
+  render() {
+
+      return (
+      <div>
+        <header></header>
+
+        <main>
+
+          <Filtros
+          valorMinPrice={this.state.minPrice}
+          valorMaxPrice={this.state.maxPrice}
+          valorBuscaProduto={this.state.busca}
+          filtroMinPrice={this.uptadeMinPrice}
+          filtroMaxPrice={this.uptadeMaxPrice}
+          filtroBuscaProduto={this.uptadeBusca}          
+          />
+
+          <div>Produto
+          </div>
+
+          <div>Carinhos</div>
+
+        </main>
+
+        <footer></footer>
+      </div>
+    );
+  }
 }
 
 export default App;
