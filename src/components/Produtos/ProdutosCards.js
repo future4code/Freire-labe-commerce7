@@ -7,28 +7,26 @@ const ContainerCards = styled.div`
     flex-direction: column;
 `
 
-const InformacaoCard = styled.div`
+const Informacao = styled.div`
     display:flex;
     flex-direction:columns;
 
 `
+const BotaoCarrinho =styled.button``
 
-class ProdutosCards extends React.Component {
+
+export class ProdutosCards extends React.Component {
     render(){
-        const produto = this.props.produtos
-        return(
-            <ContainerCards>
-                <img src="produto.imageUrl" alt="meteorito"/>
-                <InformacaoCard>
-                    <p>{produto.name}</p>
-                    <p>R${produto.value},00</p>
-                    <button>Adicionar ao carrinho</button>
-                </InformacaoCard>
-
-            </ContainerCards>
-        )
+        const produto = this.props.produto
+        return <ContainerCards>
+          <img src={produto.imageUrl} alt="meteorito"/>
+          <Informacao>
+            <p>{produto.nome}</p>
+            <p>R${produto.preco},00</p>
+            <BotaoCarrinho onClick>
+              Adicionar ao carrinho
+            </BotaoCarrinho>
+          </Informacao>
+        </ContainerCards>
     }
-
 }
-
-export default ProdutosCards;
