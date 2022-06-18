@@ -19,7 +19,7 @@ export class ProdutosCards extends React.Component {
     render(){
         const produto = this.props.produto
         return <ContainerCards>
-          <img src={produto.imageUrl} alt="meteorito"/>
+          <img src={produto.imagem} alt="meteorito"/>
           <Informacao>
             <p>{produto.nome}</p>
             <p>R${produto.preco},00</p>
