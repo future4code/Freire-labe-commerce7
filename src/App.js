@@ -1,10 +1,12 @@
 import React from 'react';
-import {Produtos} from './components/Produtos/Produtos'
+import { Produtos } from './components/Produtos/Produtos'
 import meteorito1 from './img/meteorito1.jpg'
 import meteorito2 from './img/meteorito2.jpg'
 import meteorito3 from './img/meteorito3.jpg'
 import meteorito4 from './img/meteorito4.jpg'
-import Filtros  from './components/Filtros';
+import meteorito5 from './img/meteorito5.jpg'
+import meteorito6 from './img/meteorito6.jpg'
+import Filtros from './components/Filtros';
 import styled from 'styled-components';
 
 const ContainerMain = styled.div`
@@ -41,13 +43,13 @@ const produtos = [
     id: 5,
     nome: "Meteorito 5",
     preco: 100,
-    imagem: "https://picsum.photos/200/200",
+    imagem: meteorito5,
   },
   {
     id: 6,
     nome: "Meteorito 6",
     preco: 500,
-    imagem: "https://picsum.photos/200/200",
+    imagem: meteorito6,
   }
 ]
 
@@ -55,61 +57,62 @@ class App extends React.Component {
   state = {
     busca: "",
     minPrice: "",
-    maxPrice: "", 
- }  
+    maxPrice: "",
+  }
 
 
-uptadeMinPrice = (event) => {
+  uptadeMinPrice = (event) => {
 
-    this.setState({minPrice: event.target.value})
-}
+    this.setState({ minPrice: event.target.value })
+  }
 
-uptadeMaxPrice = (event) => {
+  uptadeMaxPrice = (event) => {
 
-    this.setState({maxPrice: event.target.value})
-}
+    this.setState({ maxPrice: event.target.value })
+  }
 
-uptadeBusca = (event) => {
+  uptadeBusca = (event) => {
 
-    this.setState({busca: event.target.value})
-}
+    this.setState({ busca: event.target.value })
+  }
 
 
   render() {
-        
-     return (
+
+    return (
       <ContainerMain>
-        
 
-       
 
-          <Filtros
+
+
+        <Filtros
           valorMinPrice={this.state.minPrice}
           valorMaxPrice={this.state.maxPrice}
           valorBuscaProduto={this.state.busca}
           filtroMinPrice={this.uptadeMinPrice}
           filtroMaxPrice={this.uptadeMaxPrice}
-          filtroBuscaProduto={this.uptadeBusca}          
-          />
+          filtroBuscaProduto={this.uptadeBusca}
+        />
 
-          <Produtos
-    produtos = {produtos}
-          />
+        <Produtos
+          produtos={produtos}
+        />
 
-          <div>Carinhos</div>
+        <div>Carinhos</div>
 
-        
 
-        
+
+
       </ContainerMain>
-    
 
-      
-    
-      
-  
- ) }
- 
+
+
+
+
+
+    )
+  }
+
 
 }
 
