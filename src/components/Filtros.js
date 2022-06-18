@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const ContainerFiltros = styled.div`
 border: 1px solid black;
-width: 35vw;
+
 
 `
 

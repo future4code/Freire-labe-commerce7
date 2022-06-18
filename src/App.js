@@ -1,12 +1,16 @@
 import React from 'react';
-
 import {Produtos} from './components/Produtos/Produtos'
 import meteorito1 from './img/meteorito1.jpg'
 import meteorito2 from './img/meteorito2.jpg'
 import meteorito3 from './img/meteorito3.jpg'
 import meteorito4 from './img/meteorito4.jpg'
 import Filtros  from './components/Filtros';
+import styled from 'styled-components';
 
+const ContainerMain = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+`
 
 const produtos = [
   {
@@ -18,25 +22,25 @@ const produtos = [
   {
     id: 2,
     nome: "Meteorito 2",
-    preco: 500,
+    preco: 1000,
     imagem: meteorito2,
   },
   {
     id: 3,
     nome: "Meteorito 3",
-    preco: 500,
+    preco: 300,
     imagem: meteorito3,
   },
   {
     id: 4,
     nome: "Meteorito 4",
-    preco: 500,
+    preco: 50,
     imagem: meteorito4,
   },
   {
     id: 5,
     nome: "Meteorito 5",
-    preco: 500,
+    preco: 100,
     imagem: "https://picsum.photos/200/200",
   },
   {
@@ -73,11 +77,11 @@ uptadeBusca = (event) => {
 
   render() {
         
-     return 
-      <div>
-        <header></header>
+     return (
+      <ContainerMain>
+        
 
-        <main>
+       
 
           <Filtros
           valorMinPrice={this.state.minPrice}
@@ -94,17 +98,17 @@ uptadeBusca = (event) => {
 
           <div>Carinhos</div>
 
-        </main>
+        
 
-        <footer></footer>
-      </div>
+        
+      </ContainerMain>
     
 
       
-    />
+    
       
-  );
-  }
+  
+ ) }
  
 
 }
