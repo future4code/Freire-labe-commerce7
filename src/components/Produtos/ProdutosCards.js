@@ -32,7 +32,7 @@ export class ProdutosCards extends React.Component {
             <p>{produto.nome}</p>
             <p>R${produto.preco},00</p>
           </Informacao>
-          <BotaoCarrinho onClick>
+          <BotaoCarrinho onClick={() => this.props.adicionarAoCarrinho(produto.id)}>
               Adicionar ao carrinho
             </BotaoCarrinho>
         </ContainerCards>

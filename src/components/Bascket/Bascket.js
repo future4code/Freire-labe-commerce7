@@ -5,7 +5,7 @@ export default function Bascket(props) {
   const itensCarrinho = cartItems.map((item) => {
     return (
       <div key={item.id}>
-        <div>{item.name}</div>
+        <div>{item.nome}</div>
         <div>
           <button onClick={() => onAdd(item)} className="add">
             +

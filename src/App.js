@@ -7,6 +7,7 @@ import meteorito4 from './img/meteorito4.jpg'
 import meteorito5 from './img/meteorito5.jpg'
 import meteorito6 from './img/meteorito6.jpg'
 import Filtros from './components/Filtros';
+import Bascket from './components/Bascket/Bascket';
 import styled from 'styled-components';
 
 const ContainerMain = styled.div`
@@ -58,6 +59,18 @@ class App extends React.Component {
     busca: "",
     minPrice: "",
     maxPrice: "",
+    cartItems:[{
+      id: 5,
+      nome: "Meteorito Macro",
+      preco: 100,
+      imagem: meteorito5,
+    },
+    {
+      id: 6,
+      nome: "Meteorito Uruaçu",
+      preco: 500,
+      imagem: meteorito6,
+    }]
   }
 
 
@@ -75,6 +88,36 @@ class App extends React.Component {
 
     this.setState({ busca: event.target.value })
   }
+
+  // adicionarAoCarrinho = (produtoId) => {
+  //   const produtoCarrinho = this.state.cartItems.find((produto)=>{produtoId === produto.id
+  //     if(produtoCarrinho){
+  //       const novoProdutoCarrinho = this.state.cartItems.map(produto=>{
+  //         if(produtoId === produto.id){
+  //           return {...produto, quantidade:produto.quantidade +1}
+  //         }return produto
+  //       })
+  //       this.setState({cartItems: novoProdutoCarrinho})
+  //     }else {
+  //       const produtoAdicionar = produtos.find(produto => produtoId === produto.id)
+  //       const novoProdutoCarrinho = [...this.state.cartItems, {...produtoAdicionar, quantidade: 1}]
+  //       this.setState({cartItems: novoProdutoCarrinho})
+  //     }
+
+  //   })
+    
+
+  // }
+
+  // removerProdutoDoCarrinho = (produtoId) =>{
+  //   const novoProdutoCarrinho = this.state.cartItems.map(produto => {
+  //     if (produtoId === produto.id){
+  //       return {...produto, quantidade:produto.quantidade -1}
+  //     }return produto
+  //   }).filter(produto =>{ produto.quantidade > 0 })
+  //   this.setState({cartItems: novoProdutoCarrinho})
+  // }
+  
 
 
   render() {
@@ -96,9 +139,18 @@ class App extends React.Component {
 
         <Produtos
           produtos={produtos}
+          valorMinPrice={this.state.minPrice}
+          valorMaxPrice={this.state.maxPrice}
+          valorBuscaProduto={this.state.busca}
+          // adicionarAoCarrinho={this.adicionarAoCarrinho}
         />
 
-        <div>Carinhos</div>
+        <Bascket
+          cartItems={this.state.cartItems}
+          // adicionarAoCarrinho={this.adicionarAoCarrinho}
+          // removerProdutoDoCarrinho={this.removerProdutoDoCarrinho}
+          
+        />
 
 
 
