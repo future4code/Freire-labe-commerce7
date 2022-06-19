@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {ProdutosCards} from "./ProdutosCards"
 
 const ProdutosContainer = styled.div`
+  border: 1px solid black;
 
 `;
 
@@ -17,8 +18,8 @@ const ProdutosHeader = styled.div`
 const ProdutosGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding: 16px;
+  gap: 10px;
+  padding: 10px;
 `
 
 export class Produtos extends React.Component {

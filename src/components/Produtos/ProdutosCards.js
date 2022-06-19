@@ -9,10 +9,18 @@ const ContainerCards = styled.div`
 
 const Informacao = styled.div`
     display:flex;
-    flex-direction:columns;
+    flex-direction: roll;
+    justify-content: center;
+    gap: 50px
+    
+    
 
 `
-const BotaoCarrinho =styled.button``
+const BotaoCarrinho =styled.button`
+    width: 60%;
+    margin: 10px 55px
+    
+`
 
 
 export class ProdutosCards extends React.Component {
@@ -23,10 +31,10 @@ export class ProdutosCards extends React.Component {
           <Informacao>
             <p>{produto.nome}</p>
             <p>R${produto.preco},00</p>
-            <BotaoCarrinho onClick>
+          </Informacao>
+          <BotaoCarrinho onClick>
               Adicionar ao carrinho
             </BotaoCarrinho>
-          </Informacao>
         </ContainerCards>
     }
 }
