@@ -17,37 +17,37 @@ const ContainerMain = styled.div`
 const produtos = [
   {
     id: 1,
-    nome: "Meteorito 1",
+    nome: "Meteorito Murchison",
     preco: 500,
     imagem: meteorito1,
   },
   {
     id: 2,
-    nome: "Meteorito 2",
+    nome: "Meteorito Nakhlito",
     preco: 1000,
     imagem: meteorito2,
   },
   {
     id: 3,
-    nome: "Meteorito 3",
+    nome: "Meteorito Angrito",
     preco: 300,
     imagem: meteorito3,
   },
   {
     id: 4,
-    nome: "Meteorito 4",
+    nome: "Meteorito Condrito Carbonáceo",
     preco: 50,
     imagem: meteorito4,
   },
   {
     id: 5,
-    nome: "Meteorito 5",
+    nome: "Meteorito Macro",
     preco: 100,
     imagem: meteorito5,
   },
   {
     id: 6,
-    nome: "Meteorito 6",
+    nome: "Meteorito Uruaçu",
     preco: 500,
     imagem: meteorito6,
   }
