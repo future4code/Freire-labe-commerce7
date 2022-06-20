@@ -5,20 +5,31 @@ const ContainerCards = styled.div`
     border: 1px solid black;
     display: flex;
     flex-direction: column;
+    background-color: #14B5D9;
 `
 
 const Informacao = styled.div`
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 50px 
+    justify-content: space-around;
+    
+    text-align: center;
+    
+    p {
+         color:#011126;
+    }
 
 `
 const BotaoCarrinho =styled.button`
-    width: 60%;
-    margin: 10px 55px
+    width: 100%;
+    height: 30px;    
+    background-color:#F2387C;
+    border:none;
+    color:white;
     
 `
+
+
 
 
 export class ProdutosCards extends React.Component {
@@ -27,10 +38,10 @@ export class ProdutosCards extends React.Component {
         return <ContainerCards>
           <img src={produto.imagem} alt="meteorito"/>
           <Informacao>
-            <p>{produto.nome}</p>
-            <p>R${produto.preco},00</p>
+            <p className="ParagrafoCard">{produto.nome}</p>
+            <p><strong>R${produto.preco},00</strong></p>
           </Informacao>
-          <BotaoCarrinho onClick={this.props.adicionarAoCarrinho}>
+          <BotaoCarrinho onClick={() => this.props.adicionarAoCarrinho(produto.id)}>
               Adicionar ao carrinho
             </BotaoCarrinho>
         </ContainerCards>

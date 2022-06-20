@@ -4,6 +4,7 @@ import {ProdutosCards} from "./ProdutosCards"
 
 const ProdutosContainer = styled.div`
   border: 1px solid black;
+  background-color: #011126
 
 `;
 
@@ -12,6 +13,7 @@ const ProdutosHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  color: white;
   
 `
 
@@ -20,6 +22,7 @@ const ProdutosGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   padding: 10px;
+  
 `
 
 export class Produtos extends React.Component {
@@ -37,7 +40,7 @@ export class Produtos extends React.Component {
       .filter((produto) => this.props.valorMaxPrice ? produto.preco < this.props.valorMaxPrice : true)
       .filter((produto) => this.props.valorMinPrice ? produto.preco > this.props.valorMinPrice : true)
       .filter((produto) => this.props.valorBuscaProduto ? produto.nome.toLowerCase().includes(this.props.valorBuscaProduto.toLowerCase()) : true)
-      .sort((a, b) => this.state.order === 'descrescente' ? a.preco - b.preco : b.preco - a.preco)
+      .sort((a, b) => this.state.order === 'descrescente' ? b.preco - a.preco : a.preco - b.preco)
   }
 
   
@@ -64,7 +67,7 @@ export class Produtos extends React.Component {
         {listaDeProdutosFiltrada.map((produto)=>{
             return <ProdutosCards
             produto = {produto}
-            
+            adicionarAoCarrinho={this.props.adicionarAoCarrinho}
           />
         })}
         

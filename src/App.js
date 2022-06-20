@@ -15,6 +15,8 @@ const ContainerMain = styled.div`
   grid-template-columns: 1fr 3fr 1fr;
 `
 
+
+
 const produtos = [
   {
     id: 1,
@@ -59,20 +61,7 @@ class App extends React.Component {
     busca: "",
     minPrice: "",
     maxPrice: "",
-    cartItems: [{
-      id: 5,
-      nome: "Meteorito Macro",
-      preco: 100,
-      imagem: meteorito5,
-      quantidade: 1
-    },
-    {
-      id: 6,
-      nome: "Meteorito Uruaçu",
-      preco: 500,
-      imagem: meteorito6,
-      quantidade: 1
-    }]
+    cartItems: []
   }
 
 
@@ -111,24 +100,16 @@ class App extends React.Component {
 
 
 
-  // removerProdutoDoCarrinho = (produtoId) =>{
-  //   const novoProdutoCarrinho = this.state.cartItems.map(produto => {
-  //     if (produtoId === produto.id){
-  //       return {...produto, quantidade:produto.quantidade -1}
-  //     }return produto
-  //   }).filter(produto =>{ produto.quantidade > 0 })
-  //   this.setState({cartItems: novoProdutoCarrinho})
-  // }
-
-  calculaValorTotal = () => {
-    let valorTotal = 0
-
-    for (let produtos of this.state.cartItems) {
-      valorTotal += produtos.preco * produtos.quantidade
-    }
-
-    return valorTotal
+  removerProdutoDoCarrinho = (produtoId) =>{
+    const novoProdutoCarrinho = this.state.cartItems.map((produto) => {
+      if (produtoId === produto.id){
+        return {...produto, quantidade:produto.quantidade -1}
+      }return produto
+    }).filter((produto) => produto.quantidade > 0 )
+    this.setState({cartItems: novoProdutoCarrinho})
   }
+
+  
 
   render() {
 
@@ -159,7 +140,7 @@ class App extends React.Component {
           cartItems={this.state.cartItems}
           valorTotal={this.calculaValorTotal}
           adicionarAoCarrinho={this.adicionarAoCarrinho}
-        // removerProdutoDoCarrinho={this.removerProdutoDoCarrinho}
+        removerProdutoDoCarrinho={this.removerProdutoDoCarrinho}
 
         />
 

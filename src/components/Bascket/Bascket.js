@@ -1,32 +1,46 @@
 import React from "react";
+import styled from "styled-components";
+
+const Aside = styled.div`
+background-color:#F2387C;
+text-align: center;
+color:white;
+`
 
 export default function Bascket(props) {
   
-  const { cartItems, onAdd, onRemove } = props;
+  const { cartItems, removerProdutoDoCarrinho } = props;
   const itensCarrinho = cartItems.map((item) => {
     return (
       <div key={item.id}>
-        <p>{item.quantidade} - {item.nome} - R${item.preco},00</p>
+        <p>{item.quantidade} - {item.nome} </p>
         
 
         <div>
-          <button onClick={() => onAdd(item)} className="add">
-            +
-          </button>
-          <button onClick={() => onRemove(item)} className="add">
+          
+          <button onClick={() => removerProdutoDoCarrinho(item)}>
             -
           </button>
         </div>
       </div>
     );
   });
+  // calculaValorTotal = () => {
+  //   let valorTotal = 0
+
+  //   for (let produtos of cartItems) {
+  //     valorTotal += produtos.preco * produtos.quantidade
+  //   }
+
+  //   return valorTotal
+  // }
 
   return (
-    <aside className="bloco1">
+    <Aside className="bloco1">
       <h2>Carrinho:</h2>
       <div>{cartItems === 0 && <div>O carinho está vazio</div>}</div>
       {itensCarrinho}
-      {props.calculaValorTotal}
-    </aside>
+      
+    </Aside>
   );
 }
