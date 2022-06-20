@@ -1,11 +1,14 @@
 import React from "react";
 
 export default function Bascket(props) {
+  
   const { cartItems, onAdd, onRemove } = props;
   const itensCarrinho = cartItems.map((item) => {
     return (
       <div key={item.id}>
-        <div>{item.nome}</div>
+        <p>{item.quantidade} - {item.nome} - R${item.preco},00</p>
+        
+
         <div>
           <button onClick={() => onAdd(item)} className="add">
             +
@@ -23,6 +26,7 @@ export default function Bascket(props) {
       <h2>Carrinho:</h2>
       <div>{cartItems === 0 && <div>O carinho está vazio</div>}</div>
       {itensCarrinho}
+      {props.calculaValorTotal}
     </aside>
   );
 }

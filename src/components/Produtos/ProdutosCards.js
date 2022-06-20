@@ -9,11 +9,9 @@ const ContainerCards = styled.div`
 
 const Informacao = styled.div`
     display:flex;
-    flex-direction: roll;
+    flex-direction: column;
     justify-content: center;
-    gap: 50px
-    
-    
+    gap: 50px 
 
 `
 const BotaoCarrinho =styled.button`
@@ -32,7 +30,7 @@ export class ProdutosCards extends React.Component {
             <p>{produto.nome}</p>
             <p>R${produto.preco},00</p>
           </Informacao>
-          <BotaoCarrinho onClick={() => this.props.adicionarAoCarrinho(produto.id)}>
+          <BotaoCarrinho onClick={this.props.adicionarAoCarrinho}>
               Adicionar ao carrinho
             </BotaoCarrinho>
         </ContainerCards>

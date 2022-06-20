@@ -36,7 +36,7 @@ export class Produtos extends React.Component {
     return this.props.produtos
       .filter((produto) => this.props.valorMaxPrice ? produto.preco < this.props.valorMaxPrice : true)
       .filter((produto) => this.props.valorMinPrice ? produto.preco > this.props.valorMinPrice : true)
-      .filter((produto) => this.props.valorBuscaProduto ? produto.name.includes(this.props.valorBuscaProduto) : true)
+      .filter((produto) => this.props.valorBuscaProduto ? produto.nome.toLowerCase().includes(this.props.valorBuscaProduto.toLowerCase()) : true)
       .sort((a, b) => this.state.order === 'descrescente' ? a.preco - b.preco : b.preco - a.preco)
   }
 
@@ -63,7 +63,7 @@ export class Produtos extends React.Component {
       <ProdutosGrid>
         {listaDeProdutosFiltrada.map((produto)=>{
             return <ProdutosCards
-            produto={produto}
+            produto = {produto}
             
           />
         })}
