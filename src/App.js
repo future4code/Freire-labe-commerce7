@@ -1,26 +1,163 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Produtos } from './components/Produtos/Produtos'
+import meteorito1 from './img/meteorito1.jpg'
+import meteorito2 from './img/meteorito2.jpg'
+import meteorito3 from './img/meteorito3.jpg'
+import meteorito4 from './img/meteorito4.jpg'
+import meteorito5 from './img/meteorito5.jpg'
+import meteorito6 from './img/meteorito6.jpg'
+import Filtros from './components/Filtros';
+import Bascket from './components/Bascket/Bascket';
+import styled from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const ContainerMain = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+`
+
+
+
+const produtos = [
+  {
+    id: 1,
+    nome: "Meteorito Murchison",
+    preco: 500,
+    imagem: meteorito1,
+  },
+  {
+    id: 2,
+    nome: "Meteorito Nakhlito",
+    preco: 1000,
+    imagem: meteorito2,
+  },
+  {
+    id: 3,
+    nome: "Meteorito Angrito",
+    preco: 300,
+    imagem: meteorito3,
+  },
+  {
+    id: 4,
+    nome: "Meteorito Condrito Carbonáceo",
+    preco: 50,
+    imagem: meteorito4,
+  },
+  {
+    id: 5,
+    nome: "Meteorito Macro",
+    preco: 100,
+    imagem: meteorito5,
+  },
+  {
+    id: 6,
+    nome: "Meteorito Uruaçu",
+    preco: 500,
+    imagem: meteorito6,
+  }
+]
+
+class App extends React.Component {
+  state = {
+    busca: "",
+    minPrice: "",
+    maxPrice: "",
+    cartItems: []
+  }
+
+
+  updateMinPrice = (event) => {
+
+    this.setState({ minPrice: event.target.value })
+  }
+
+  updateMaxPrice = (event) => {
+
+    this.setState({ maxPrice: event.target.value })
+  }
+
+  updateBusca = (event) => {
+
+    this.setState({ busca: event.target.value })
+  }
+
+  adicionarAoCarrinho = (produtoId) => {
+    const produtoCarrinho = this.state.cartItems.find(produto => produtoId === produto.id)
+    if (produtoCarrinho) {
+      const novoProdutoCarrinho = this.state.cartItems.map(produto => {
+        if (produtoId === produto.id) {
+          return { ...produto, quantidade: produto.quantidade + 1 }
+        } return produto
+      })
+      this.setState({ cartItems: novoProdutoCarrinho })
+    } else {
+      const produtoAdicionar = produtos.find(produto => produtoId === produto.id)
+      const novoProdutoCarrinho = [...this.state.cartItems, { ...produtoAdicionar, quantidade: 1 }]
+      this.setState({ cartItems: novoProdutoCarrinho })
+    }
+
+  }
+
+
+
+
+  removerProdutoDoCarrinho = (produtoId) =>{
+    const novoProdutoCarrinho = this.state.cartItems.map((produto) => {
+      if (produtoId === produto.id){
+        return {...produto, quantidade:produto.quantidade -1}
+      }return produto
+    }).filter((produto) => produto.quantidade > 0 )
+    this.setState({cartItems: novoProdutoCarrinho})
+  }
+
+  
+
+  render() {
+
+    return (
+      <ContainerMain>
+
+
+
+
+        <Filtros
+          valorMinPrice={this.state.minPrice}
+          valorMaxPrice={this.state.maxPrice}
+          valorBuscaProduto={this.state.busca}
+          filtroMinPrice={this.updateMinPrice}
+          filtroMaxPrice={this.updateMaxPrice}
+          filtroBuscaProduto={this.updateBusca}
+        />
+
+        <Produtos
+          produtos={produtos}
+          valorMinPrice={this.state.minPrice}
+          valorMaxPrice={this.state.maxPrice}
+          valorBuscaProduto={this.state.busca}
+          adicionarAoCarrinho={this.adicionarAoCarrinho}
+        />
+
+        <Bascket
+          cartItems={this.state.cartItems}
+          valorTotal={this.calculaValorTotal}
+          adicionarAoCarrinho={this.adicionarAoCarrinho}
+        removerProdutoDoCarrinho={this.removerProdutoDoCarrinho}
+
+        />
+
+
+
+
+      </ContainerMain>
+
+
+
+
+
+
+    )
+  }
+
+
 }
 
 export default App;
